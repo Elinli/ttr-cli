@@ -29,7 +29,7 @@ npm i ttr-cli -D
 
 # 4. 下载依赖 npm i / pnpm i / yarn
 
-# 5. 运行项目 npm run dev-*(8:dev/test/pre/prod)
+# 5. 运行项目 npm run dev-*(*:dev/test/pre/prod)
 
-# 6. 打包项目 npm run build-*(8:dev/test/pre/prod/analy)
+# 6. 打包项目 npm run build-*(*:dev/test/pre/prod/analy)
 ```
