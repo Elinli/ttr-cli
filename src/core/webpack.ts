@@ -39,7 +39,7 @@ const baseDevDep = [
   'webpack-bundle-analyzer@^4.9.1',
   'webpack-cli@^5.1.4',
   'webpack-dev-server@^4.15.1',
-  'webpack-merge@^5.9.0'
+  'webpack-merge@^5.9.0',
 ]
 
 export const webpackInit = async () => {

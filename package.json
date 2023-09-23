@@ -1,6 +1,6 @@
 {
     "name": "ttr-cli",
-    "version": "1.0.10",
+    "version": "1.0.14",
     "description": "项目初始化脚手架",
     "main": "dist/index.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "build": "tsc && ts-node build/index.ts",
         "commit": "git add . && git-cz ",
         "update-version": "ts-node build/version.ts",
-        "commit-version": "npm run update-version && git add . && git-cz",
+        "commit-version": "npm run update-version && git add . -f && git-cz",
         "prepare": "husky install",
         "release": "tsc && ts-node build/index.ts"
     },

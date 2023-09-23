@@ -9,13 +9,7 @@ const promptList = [
     name: 'choice',
     message: '选择要安装的框架(默认react+typescript)',
     default: 0,
-    choices: [
-      { value: 'react+typescript', name: 'react+typescript' },
-      { value: 'react', name: 'react' },
-      { value: 'vue3+typescript', name: 'vue3+typescript' },
-      { value: 'vue3', name: 'vue3' },
-      { value: 'vue2', name: 'vue2' },
-    ],
+    choices: [{ value: 'react+typescript', name: 'react+typescript' }],
   },
   {
     type: 'checkbox',
