@@ -26,4 +26,10 @@ npm i ttr-cli -D
 },
 
 # 3. 执行npm run ttr-cli, 即会自动添加依赖
+
+# 4. 下载依赖 npm i / pnpm i / yarn
+
+# 5. 运行项目 npm run dev-*(8:dev/test/pre/prod)
+
+# 6. 打包项目 npm run build-*(8:dev/test/pre/prod/analy)
 ```
