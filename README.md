@@ -6,7 +6,7 @@
 
 ## 实现功能
 
-- react + typescript + webpack 项目工程化
+- react + typescript + webpack 项目工程化配置
 - 保存代码自动格式化
 - 提交前 commit 校验
 - eslint + prettier 校验
