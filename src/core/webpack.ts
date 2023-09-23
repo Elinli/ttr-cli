@@ -1,13 +1,14 @@
 import { getPath } from './../utils/path'
 import { writeInPkg } from './../utils/tool'
 import fs from 'fs-extra'
-import { webpackBaseConfig } from '../template/webpackConfig/webpack.base'
-import { webpackAnalyConfig } from '../template/webpackConfig/webpack.analy'
-import { webpackDevConfig } from '../template/webpackConfig/webpack.dev'
-import { webpackProdConfig } from '../template/webpackConfig/webpack.prod'
-import { getPackageJson } from '../utils/env'
+import { webpackBaseConfig } from '../template/webpack.base'
+import { webpackAnalyConfig } from '../template/webpack.analy'
+import { webpackDevConfig } from '../template/webpack.dev'
+import { webpackProdConfig } from '../template/webpack.prod'
+// import { getPackageJson } from '../utils/env'
+import { debugError } from '../utils/debug'
 
-const dependencies = ['react@^18.2.0', 'react-dom@^18.2.0', 'react-router@^6.10']
+const dependencies = ['react@^18.2.0', 'react-dom@^18.2.0']
 
 const baseDevDep = [
   '@babel/core@^7.22.20',
@@ -42,26 +43,75 @@ const baseDevDep = [
   'webpack-merge@^5.9.0',
 ]
 
+// const scripts = {
+//   'dev:dev':
+//     'cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js',
+//   'dev:test':
+//     'cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js',
+//   'dev:pre':
+//     'cross-env NODE_ENV=development BASE_ENV=pre webpack-dev-server -c build/webpack.dev.js',
+//   'dev:prod':
+//     'cross-env NODE_ENV=development BASE_ENV=production webpack-dev-server -c build/webpack.dev.js',
+//   'build:dev':
+//     'cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.js',
+//   'build:test':
+//     'cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.js',
+//   'build:pre':
+//     'cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.js',
+//   'build:prod':
+//     'cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js',
+//   'build:analy':
+//     'cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js',
+// }
 export const webpackInit = async () => {
   let devDependencies: string[] = baseDevDep
   await writeInPkg(devDependencies, 'devDependencies')
   await writeInPkg(dependencies, 'dependencies')
 
-  let pkgJson = await getPackageJson()
+  try {
+    // let pkgJson = await getPackageJson()
+    // debugError(`===========out============${JSON.stringify(pkgJson)}`)
+    // pkgJson.scripts['pre-commit'] = 'lint-staged'
+    // pkgJson.scripts['prepare'] = 'husky install'
+    // pkgJson.scripts['pre-commit'] = 'lint-staged'
+    // debugError(`===========out rrr============${JSON.stringify(pkgJson)}`)
+    // pkgJson.scripts[
+    //   'dev-dev'
+    // ] = `cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js`
+    // debugError('===========out===1111=========')
+    // pkgJson.scripts[
+    //   'dev-test'
+    // ] = `cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js`
+    // pkgJson.scripts[
+    //   'dev-pre'
+    // ] = `cross-env NODE_ENV=development BASE_ENV=pre webpack-dev-server -c build/webpack.dev.js`
+    // pkgJson.scripts[
+    //   'dev-prod'
+    // ] = `cross-env NODE_ENV=development BASE_ENV=production webpack-dev-server -c build/webpack.dev.js`
+    // pkgJson.scripts[
+    //   'build-dev'
+    // ] = `cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.js`
+    // pkgJson.scripts[
+    //   'build-test'
+    // ] = `cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.js`
+    // pkgJson.scripts[
+    //   'build-pre'
+    // ] = `cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.js`
+    // pkgJson.scripts[
+    //   'build-prod'
+    // ] = `cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js`
+    // pkgJson.scripts[
+    //   'build-analy'
+    // ] = `cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js`
+    // debugError('===========in ini============')
 
-  pkgJson.scripts['dev:dev'] = 'cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js'
-  pkgJson.scripts['dev:test'] = 'cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js'
-  pkgJson.scripts['dev:pre'] = 'cross-env NODE_ENV=development BASE_ENV=pre webpack-dev-server -c build/webpack.dev.js'
-  pkgJson.scripts['dev:prod'] = 'cross-env NODE_ENV=development BASE_ENV=production webpack-dev-server -c build/webpack.dev.js'
-  pkgJson.scripts['build:dev'] = 'cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.js'
-  pkgJson.scripts['build:test'] = 'cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.js'
-  pkgJson.scripts['build:pre'] = 'cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.js'
-  pkgJson.scripts['build:prod'] = 'cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js'
-  pkgJson.scripts['build:analy'] = 'cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js'
-
-  fs.writeJsonSync(getPath('package.json'), pkgJson, { spaces: 2 })
-  fs.outputFileSync(getPath('./build/webpack.base.js'), webpackBaseConfig())
-  fs.outputFileSync(getPath('./build/webpack.prod.js'), webpackProdConfig())
-  fs.outputFileSync(getPath('./build/webpack.dev.js'), webpackDevConfig())
-  fs.outputFileSync(getPath('./build/webpack.analy.js'), webpackAnalyConfig())
+    // fs.writeJsonSync(getPath('package.json'), pkgJson, { spaces: 2 })
+    fs.outputFileSync(getPath('./build/webpack.base.js'), webpackBaseConfig())
+    fs.outputFileSync(getPath('./build/webpack.prod.js'), webpackProdConfig())
+    fs.outputFileSync(getPath('./build/webpack.dev.js'), webpackDevConfig())
+    fs.outputFileSync(getPath('./build/webpack.analy.js'), webpackAnalyConfig())
+    debugError('===========in============')
+  } catch (error) {
+    debugError(`=============error===============${error}`)
+  }
 }

@@ -22,11 +22,17 @@ export const down = async (runName: string | string[], type: string) => {
   })
 }
 
-export const spawnSync = (n: string, i: string, runItem: string, type: string, basePath: string) => {
+export const spawnSync = (
+  n: string,
+  i: string,
+  runItem: string,
+  type: string,
+  basePath: string
+) => {
   return new Promise((resolve) => {
     spawn.sync(n, [i, runItem, type], {
       stdio: 'pipe',
-      cwd: basePath
+      cwd: basePath,
     })
     debugInfo(`${runItem}✅`)
 
@@ -34,17 +40,27 @@ export const spawnSync = (n: string, i: string, runItem: string, type: string, b
   })
 }
 
-export const writeInPkg = async (devArr: string[], key: string = 'devDependencies') => {
-  let pkg = await getPackageJson()
-  devArr.forEach((item: string) => {
-    // 为了防止安装包里面的名字有@
-    const index = item.lastIndexOf('@')
-    const k = index === -1 ? item : item.slice(0, index)
-    const v = index === -1 ? '' : item.slice(index + 1) || ''
-    pkg[key][k] = v
-    debugInfo(`${item}✅`)
-  })
-  fs.writeJsonSync(getPath('package.json'), pkg, { spaces: 2 })
+export const writeInPkg = async (
+  devArr: string[],
+  key: string = 'devDependencies'
+) => {
+  try {
+    let pkg = await getPackageJson()
+    devArr.forEach((item: string) => {
+      // 为了防止安装包里面的名字有@
+      const index = item.lastIndexOf('@')
+      const k = index === -1 ? item : item.slice(0, index)
+      const v = index === -1 ? '' : item.slice(index + 1) || ''
+      if (!pkg[key]) {
+        pkg[key] = {}
+      }
+      pkg[key][k] = v
+      debugInfo(`${item}✅`)
+    })
+    fs.writeJsonSync(getPath('package.json'), pkg, { spaces: 2 })
+  } catch (error) {
+    debugInfo(`=============writeInPkg================${error}`)
+  }
 }
 
 export const run = async (str: string) => {
@@ -58,7 +74,7 @@ export const run = async (str: string) => {
   debugInfo(`${runArr.join(' ')}✅`)
   spawn.sync(npm, args, {
     stdio: 'pipe',
-    cwd: basePath
+    cwd: basePath,
   })
 }
 

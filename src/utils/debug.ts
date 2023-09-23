@@ -16,7 +16,7 @@ const switchDebug = (debug: boolean) => {
  * @param msg 信息
  */
 const debugError = (msg: string) => {
-  debugSwitch && log(chalk.hex('#646cff')(`[ttr-cli]:`) + chalk.red(msg))
+  debugSwitch && log(chalk.hex('#ff0000')(`[ttr-cli]:`) + chalk.red(msg))
   // 如果出错就退出
   process.exit(0)
 }
@@ -45,11 +45,11 @@ const debugProcess = (msg: string) => {
  * @param msg 信息
  */
 const debugWarning = (msg: string) => {
-  log(chalk.hex('#646cff')(`[ttr-cli]:`) + chalk.yellow(msg))
+  log(chalk.hex('#ffe070')(`[ttr-cli]:`) + chalk.yellow(msg))
 }
 
 const debugTxt = (msg: string) => {
-  log(chalk.hex('#646cff')(`[ttr-cli]:`) + chalk.hex('#5c6d82')(msg))
+  log(chalk.hex('#ee6622')(`[ttr-cli]:`) + chalk.hex('#5c6d82')(msg))
 }
 
 export {
