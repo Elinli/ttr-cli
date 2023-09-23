@@ -15,7 +15,7 @@ jobs:
           registry-url: 'https://www.npmjs.com'
           # registry-url: 'https://registry.npmjs.org'
       - name: 依赖安装
-        run: npm install
+        run: pnpm install
       - name: 构建
         run: npm run build
       - run: cd ./dist && npm publish
