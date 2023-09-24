@@ -69,49 +69,11 @@ export const webpackInit = async () => {
   await writeInPkg(dependencies, 'dependencies')
 
   try {
-    // let pkgJson = await getPackageJson()
-    // debugError(`===========out============${JSON.stringify(pkgJson)}`)
-    // pkgJson.scripts['pre-commit'] = 'lint-staged'
-    // pkgJson.scripts['prepare'] = 'husky install'
-    // pkgJson.scripts['pre-commit'] = 'lint-staged'
-    // debugError(`===========out rrr============${JSON.stringify(pkgJson)}`)
-    // pkgJson.scripts[
-    //   'dev-dev'
-    // ] = `cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js`
-    // debugError('===========out===1111=========')
-    // pkgJson.scripts[
-    //   'dev-test'
-    // ] = `cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js`
-    // pkgJson.scripts[
-    //   'dev-pre'
-    // ] = `cross-env NODE_ENV=development BASE_ENV=pre webpack-dev-server -c build/webpack.dev.js`
-    // pkgJson.scripts[
-    //   'dev-prod'
-    // ] = `cross-env NODE_ENV=development BASE_ENV=production webpack-dev-server -c build/webpack.dev.js`
-    // pkgJson.scripts[
-    //   'build-dev'
-    // ] = `cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.js`
-    // pkgJson.scripts[
-    //   'build-test'
-    // ] = `cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.js`
-    // pkgJson.scripts[
-    //   'build-pre'
-    // ] = `cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.js`
-    // pkgJson.scripts[
-    //   'build-prod'
-    // ] = `cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js`
-    // pkgJson.scripts[
-    //   'build-analy'
-    // ] = `cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js`
-    // debugError('===========in ini============')
-
-    // fs.writeJsonSync(getPath('package.json'), pkgJson, { spaces: 2 })
     fs.outputFileSync(getPath('./build/webpack.base.js'), webpackBaseConfig())
     fs.outputFileSync(getPath('./build/webpack.prod.js'), webpackProdConfig())
     fs.outputFileSync(getPath('./build/webpack.dev.js'), webpackDevConfig())
     fs.outputFileSync(getPath('./build/webpack.analy.js'), webpackAnalyConfig())
-    debugError('===========in============')
   } catch (error) {
-    debugError(`=============error===============${error}`)
+    debugError(`======error=======${error}`)
   }
 }

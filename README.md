@@ -4,6 +4,10 @@
 
 实现一个项目初始化 CLI，为后续项目提供统一初始化脚手架
 
+## 使用前提
+
+新建一个项目文件夹，使用 npm init 初始化
+
 ## 实现功能
 
 - react + typescript + webpack 项目工程化配置
@@ -18,7 +22,7 @@
 
 ```BASH
 # 1. 项目中执行
-npm i ttr-cli -D
+npm i ttr-cli -D / yarn add ttr-cli -D
 
 # 2. 在package.json中添加script
 "scripts": {
@@ -27,7 +31,7 @@ npm i ttr-cli -D
 
 # 3. 执行npm run ttr-cli, 即会自动添加依赖
 
-# 4. 下载依赖 npm i / pnpm i / yarn
+# 4. 下载依赖 npm i  / yarn
 
 # 5. 运行项目 npm run dev-*(*:dev/test/pre/prod)
 

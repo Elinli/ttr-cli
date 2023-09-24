@@ -1,6 +1,6 @@
 {
   "name": "ttr-cli",
-  "version": "1.0.54",
+  "version": "1.2.2",
   "description": "项目初始化脚手架",
   "main": "dist/index.js",
   "scripts": {
